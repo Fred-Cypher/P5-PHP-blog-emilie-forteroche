@@ -56,4 +56,8 @@ class ArticleController
         $view = new View("A propos");
         $view->render("apropos");
     }
+
+    public function countArticleViews(){
+        // Incrémenter le nombre de vues en appelant ArticleManager
+    }
 }

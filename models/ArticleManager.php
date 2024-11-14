@@ -92,4 +92,6 @@ class ArticleManager extends AbstractEntityManager
         $sql = "DELETE FROM article WHERE id = :id";
         $this->db->query($sql, ['id' => $id]);
     }
+
+    // Fonction pour incrémenter le nombre de vues dans la BDD
 }

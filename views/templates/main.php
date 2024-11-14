@@ -37,7 +37,8 @@
     </main>
     
     <footer>
-        <p>Copyright © Emilie Forteroche 2023 - Openclassrooms - <a href="index.php?action=admin">Admin</a>
+        <p>Copyright © Emilie Forteroche 2023 - Openclassrooms - <a href="index.php?action=admin">Admin</a> - 
+        <a href="index.php?action=monitoring">Monitoring</a>
     </footer>
 
 </body>
