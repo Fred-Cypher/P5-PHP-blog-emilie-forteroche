@@ -93,5 +93,17 @@ class ArticleManager extends AbstractEntityManager
         $this->db->query($sql, ['id' => $id]);
     }
 
-    // Fonction pour incrémenter le nombre de vues dans la BDD
+    /**
+     * Fonction pour incrémenter le nombre de vues dans la BDD
+     *
+     * @param integer $id
+     * @return void
+     */
+    public function incrementViews(int $id): void
+    {
+        $sql = "UPDATE article SET views = views + 1 WHERE id = :id";
+        $this->db->query($sql, [
+            'id' => $id
+        ]);
+    }
 }

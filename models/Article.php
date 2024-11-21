@@ -10,7 +10,8 @@
     private string $title = "";
     private string $content = "";
     private ?DateTime $dateCreation = null;
-    private ?DateTime $dateUpdate = null;  
+    private ?DateTime $dateUpdate = null;
+    private int $views = 0;
 
     /**
      * Setter pour l'id de l'utilisateur. 
@@ -126,5 +127,26 @@
     public function getDateUpdate() : ?DateTime 
     {
         return $this->dateUpdate;
+    }
+
+    /**
+     * Setter pour le nombre de vues
+     *
+     * @param integer $view
+     * @return void
+     */
+    public function setViews(int $views): void
+    {
+        $this->views = $views;
+    }
+
+    /**
+     * Getter pour le nombre de vues
+     *
+     * @return integer
+     */
+    public function getViews(): int
+    {
+        return $this->views;
     }
  }

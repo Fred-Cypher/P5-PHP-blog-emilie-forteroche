@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 class ArticleController 
 {
@@ -25,6 +25,7 @@ class ArticleController
         $id = Utils::request("id", -1);
 
         $articleManager = new ArticleManager();
+        $articleManager->incrementViews($id);
         $article = $articleManager->getArticleById($id);
         
         if (!$article) {
@@ -55,9 +56,5 @@ class ArticleController
     public function showApropos() {
         $view = new View("A propos");
         $view->render("apropos");
-    }
-
-    public function countArticleViews(){
-        // Incrémenter le nombre de vues en appelant ArticleManager
     }
 }
