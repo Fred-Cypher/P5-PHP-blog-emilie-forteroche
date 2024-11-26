@@ -337,6 +337,32 @@ a.info {
     border: 1px solid var(--backgroundColor);
 }
 
+/**
+ * Monitoring
+ */
+
+.monitoringTable{
+    border : var(--headerColor) 5px solid;
+}
+
+table tr:nth-child(even){
+    background-color: var(--headerPaleColor);
+}
+
+.tableHeader{
+    background-color: var(--headerColor);
+    color: white;
+    font-size: large;
+}
+
+.tableCase{
+    padding: 10px;
+}
+
+.tablecenter{
+    text-align: center;
+}
+
 /** 
  * Footer global de la page.
  */

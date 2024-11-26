@@ -59,11 +59,12 @@ class ArticleManager extends AbstractEntityManager
      */
     public function addArticle(Article $article) : void
     {
-        $sql = "INSERT INTO article (id_user, title, content, date_creation) VALUES (:id_user, :title, :content, NOW())";
+        $sql = "INSERT INTO article (id_user, title, content, date_creation, views) VALUES (:id_user, :title, :content, NOW(), :views)";
         $this->db->query($sql, [
             'id_user' => $article->getIdUser(),
             'title' => $article->getTitle(),
-            'content' => $article->getContent()
+            'content' => $article->getContent(),
+            'views' => 0,
         ]);
     }
 
@@ -105,5 +106,18 @@ class ArticleManager extends AbstractEntityManager
         $this->db->query($sql, [
             'id' => $id
         ]);
+    }
+
+    public function getArticlesWithCommentCount(): array
+    {
+        $sql = " SELECT a.id AS article_id, a.title AS article_title, a.views AS article_views, a.date_creation AS article_date_creation,
+            COUNT(c.id_article) AS comment_count
+        FROM article a
+        LEFT JOIN comment c ON a.id = c.id_article
+        GROUP BY a.id";
+
+        $result = $this->db->query($sql);
+
+        return $result->fetchAll(PDO::FETCH_ASSOC); 
     }
 }

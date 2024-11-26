@@ -37,12 +37,12 @@ class AdminController {
 
         // On récupère les articles.
         $articleManager = new ArticleManager();
-        $articles = $articleManager->getAllArticles();
-
+        $articleWithcomments = $articleManager->getArticlesWithCommentCount();
+        
         // On affiche la page de monitoring.
         $view = new View("Monitoring");
         $view->render("monitoring", [
-            'articles' => $articles
+            'articleWithcomments' => $articleWithcomments,
         ]);
     }
 
