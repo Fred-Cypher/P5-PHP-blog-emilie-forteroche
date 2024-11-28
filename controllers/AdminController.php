@@ -37,12 +37,38 @@ class AdminController {
 
         // On récupère les articles.
         $articleManager = new ArticleManager();
-        $articleWithcomments = $articleManager->getArticlesWithCommentCount();
+        $articleWithComments = $articleManager->getArticlesWithCommentCount();
+
+        // Tri pour l'affichage du tableau 
+        $sort = $_GET['sort'] ?? null;
+        $order = $_GET['order'] ?? 'asc';
+
+        if($sort){
+            usort($articleWithComments, function ($a, $b) use ($sort, $order){
+                if($sort === 'date_creation'){
+                    $valueA = strtotime($a[$sort]);
+                    $valueB = strtotime($b[$sort]);
+                } else {
+                    $valueA = $a[$sort];
+                    $valueB = $b[$sort];
+                }
+
+                if ($valueA === $valueB) {
+                    return 0;
+                }
+
+                return ($order === 'asc' ? $valueA > $valueB : $valueA < $valueB) ? 1 : -1;
+            });
+        }
+
+        /*usort($articleWithcomments, function ($a, $b) {
+            return $a['article_title'] <=> $b['article_title']; 
+        });*/
         
         // On affiche la page de monitoring.
         $view = new View("Monitoring");
         $view->render("monitoring", [
-            'articleWithcomments' => $articleWithcomments,
+            'articleWithComments' => $articleWithComments,
         ]);
     }
 

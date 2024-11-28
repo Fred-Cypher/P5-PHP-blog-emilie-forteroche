@@ -363,6 +363,10 @@ table tr:nth-child(even){
     text-align: center;
 }
 
+.icon{
+    width: 15px;
+}
+
 /** 
  * Footer global de la page.
  */
