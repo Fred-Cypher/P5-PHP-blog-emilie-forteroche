@@ -262,7 +262,7 @@ a.info {
 
 .comments li {
     display: flex;
-    margin-bottom: 20px;
+    margin: 20px 0;
 }
 
 .comments .smiley {
@@ -271,6 +271,31 @@ a.info {
     line-height: 0.7;
     font-size: 60px;
     color: var(--quoteColor);
+}
+
+.commentsForm{
+    background-color: var(--backgroundColor);
+    color: black;
+}
+
+.deleteChoice{
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.deleteComments{
+    height: 30px;
+    padding: 5px 10px;
+    background-color: var(--commentColor);
+    color: white;
+    border: none;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.deleteOneComment{
+    margin-bottom: 10px;
 }
 
 /* On redéfinit certaines parties du "info" pour l'affichage dans les commentaires */
@@ -357,6 +382,19 @@ table tr:nth-child(even){
 
 .tableCase{
     padding: 10px;
+}
+
+.case{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sortButtons{
+    display: flex;
+    flex-direction: column;
+    padding : 0 5px;
 }
 
 .tablecenter{

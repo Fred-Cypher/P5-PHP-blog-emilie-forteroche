@@ -1,8 +1,8 @@
 <?php
-    /**
-     * Ce template affiche un article et ses commentaires.
-     * Il affiche également un formulaire pour ajouter un commentaire.
-     */
+/**
+ * Ce template affiche un article et ses commentaires.
+ * Il affiche également un formulaire pour ajouter un commentaire.
+ */
 ?>
 
 <article class="mainArticle">
@@ -20,22 +20,51 @@
 
 <div class="comments">
     <h2 class="commentsTitle">Vos Commentaires</h2>
-    <?php 
-        if (empty($comments)) {
-            echo '<p class="info">Aucun commentaire pour cet article.</p>';
-        } else {
+    <?php
+    if (empty($comments)) {
+        echo '<p class="info">Aucun commentaire pour cet article.</p>';
+    } else { ?>
+        <form action="index.php?action=deleteSeveralComments" method="POST" class="commentsForm">
+            <input type="hidden" name="idArticle" value="<?= $article->getId() ?>">
+            <?php
             echo '<ul>';
             foreach ($comments as $comment) {
                 echo '<li>';
+                if (isset($_SESSION['user'])) {
+            ?>
+                    <input type="checkbox" name="commentIds[]" value="<?= $comment->getId() ?>">
+                <?php }
                 echo '  <div class="smiley">☻</div>';
                 echo '  <div class="detailComment">';
                 echo '      <h3 class="info">Le ' . Utils::convertDateToFrenchFormat($comment->getDateCreation()) . ", " . Utils::format($comment->getPseudo()) . ' a écrit :</h3>';
                 echo '      <p class="content">' . Utils::format($comment->getContent()) . '</p>';
                 echo '  </div>';
                 echo '</li>';
-            }               
+                if (isset($_SESSION['user'])) {
+                ?>
+                    <div class="deleteOneComment">
+                        <a href=" index.php?action=deleteComment&id=<?= $comment->getId() ?>">
+                            <img src="../../icons/trash.svg" alt="Poubelle">
+                            Supprimer ce commentaire
+                        </a>
+                    </div>
+                <?php } ?>
+            <?php
+                echo '_______________';
+            } ?>
+            <div>
+                <?php
+                    if (isset($_SESSION['user'])) {
+                ?>
+                    <button type="submit" class="deleteComments">Supprimer les commentaires sélectionnés</button>
+                <?php } ?>
+            </div>
+            <?php
             echo '</ul>';
-        } 
+            ?>
+        </form>
+    <?php
+    }
     ?>
 
     <form action="index.php" method="post" class="foldedCorner">

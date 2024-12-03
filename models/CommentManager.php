@@ -66,4 +66,13 @@ class CommentManager extends AbstractEntityManager
         return $result->rowCount() > 0;
     }
 
+    public function deleteSeveralComments(array $commentIds): bool
+    {
+        $placeholder = implode(',', array_fill(0, count($commentIds), '?'));
+        $sql = "DELETE FROM comment WHERE id IN ($placeholder)";
+        $result = $this->db->query($sql, $commentIds);
+
+        return $result->rowCount() > 0;
+    }
+
 }

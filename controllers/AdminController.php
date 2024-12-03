@@ -45,13 +45,8 @@ class AdminController {
 
         if($sort){
             usort($articleWithComments, function ($a, $b) use ($sort, $order){
-                if($sort === 'date_creation'){
-                    $valueA = strtotime($a[$sort]);
-                    $valueB = strtotime($b[$sort]);
-                } else {
                     $valueA = $a[$sort];
                     $valueB = $b[$sort];
-                }
 
                 if ($valueA === $valueB) {
                     return 0;
@@ -61,10 +56,6 @@ class AdminController {
             });
         }
 
-        /*usort($articleWithcomments, function ($a, $b) {
-            return $a['article_title'] <=> $b['article_title']; 
-        });*/
-        
         // On affiche la page de monitoring.
         $view = new View("Monitoring");
         $view->render("monitoring", [
@@ -219,8 +210,46 @@ class AdminController {
         // On supprime l'article.
         $articleManager = new ArticleManager();
         $articleManager->deleteArticle($id);
-       
+
         // On redirige vers la page d'administration.
         Utils::redirect("admin");
+    }
+
+    /**
+     * Suppression d'un commentaire.
+     * @return void
+     */
+
+    public function deleteComment(): void
+    {
+        $this->checkIfUserIsConnected();
+
+        $id = Utils::request("id", -1);
+
+
+        // On supprime le commentaire.
+        $commentManager = new CommentManager();
+        $comment = $commentManager->getCommentById($id);
+        $articleId = $comment->getIdArticle();
+        $commentManager->deleteComment($comment);
+
+        // On redirige vers la page de l'article
+        Utils::redirect("showArticle", ['id' => $articleId]);
+    }
+
+    public function deleteSeveralComments(): void
+    {
+        $this->checkIfUserIsConnected();
+
+        $commentsIds = Utils::request("commentIds", []);
+
+        if(empty($commentsIds)){
+            Utils::redirect("monitoring", ['error' => 'Aucun commentaire sélectionné']);
+        }
+
+        $commentManager = new CommentManager();
+        $commentManager->deleteSeveralComments($commentsIds);
+        
+        Utils::redirect("showArticle", ['id' => Utils::request('idArticle')]);
     }
 }
