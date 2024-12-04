@@ -142,6 +142,7 @@
 
     /**
      * Getter pour le nombre de vues
+     * Permet de récupérer le nombre de vues
      *
      * @return integer
      */

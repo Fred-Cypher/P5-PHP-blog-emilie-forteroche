@@ -243,10 +243,12 @@ class AdminController {
 
         $commentsIds = Utils::request("commentIds", []);
 
+        // Vérifie qu'ily a des commentaires sélectionnés
         if(empty($commentsIds)){
-            Utils::redirect("monitoring", ['error' => 'Aucun commentaire sélectionné']);
+            Utils::redirect("showArticle", ['id' => Utils::request('idArticle')]);
         }
 
+        // Suppression de plusieurs commentaires
         $commentManager = new CommentManager();
         $commentManager->deleteSeveralComments($commentsIds);
         

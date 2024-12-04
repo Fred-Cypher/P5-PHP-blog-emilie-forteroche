@@ -108,6 +108,11 @@ class ArticleManager extends AbstractEntityManager
         ]);
     }
 
+    /**
+     * Permet de récupérer le nombre de commentaires par article
+     *
+     * @return array
+     */
     public function getArticlesWithCommentCount(): array
     {
         $sql = " SELECT a.id AS article_id, a.title AS article_title, a.views AS article_views, a.date_creation AS article_date_creation,

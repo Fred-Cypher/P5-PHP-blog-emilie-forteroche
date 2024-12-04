@@ -66,6 +66,12 @@ class CommentManager extends AbstractEntityManager
         return $result->rowCount() > 0;
     }
 
+    /**
+     * Supprime plusieurs commentaires sélectionnés 
+     *
+     * @param array $commentIds 
+     * @return boolean
+     */
     public function deleteSeveralComments(array $commentIds): bool
     {
         $placeholder = implode(',', array_fill(0, count($commentIds), '?'));

@@ -27,7 +27,7 @@
                 if (isset($_SESSION['user'])) {
                     echo '<a href="index.php?action=disconnectUser">Déconnexion</a>';
                 }
-                ?>
+            ?>
         </nav>
         <h1>Emilie Forteroche</h1>
     </header>
@@ -37,8 +37,14 @@
     </main>
     
     <footer>
-        <p>Copyright © Emilie Forteroche 2023 - Openclassrooms - <a href="index.php?action=admin">Admin</a> - 
-        <a href="index.php?action=monitoring">Monitoring</a>
+        <p>Copyright © Emilie Forteroche 2023 - Openclassrooms - <a href="index.php?action=admin">Admin</a> 
+            <?php 
+                if(isset($_SESSION['user'])) {
+                    echo '- 
+                <a href="index.php?action=monitoring">Monitoring</a>';
+                }
+            ?>
+        </p>
     </footer>
 
 </body>
