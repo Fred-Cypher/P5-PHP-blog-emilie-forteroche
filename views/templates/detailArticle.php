@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Ce template affiche un article et ses commentaires.
  * Il affiche également un formulaire pour ajouter un commentaire.
@@ -54,7 +55,7 @@
             } ?>
             <div>
                 <?php
-                    if (isset($_SESSION['user'])) {
+                if (isset($_SESSION['user'])) {
                 ?>
                     <button type="submit" class="deleteComments">Supprimer les commentaires sélectionnés</button>
                 <?php } ?>
