@@ -395,6 +395,11 @@ table tr:nth-child(even){
     display: flex;
     flex-direction: column;
     padding : 0 5px;
+    height: 80px;
+}
+
+.sortButtons .hidden{
+    visibility: hidden;
 }
 
 .tablecenter{
