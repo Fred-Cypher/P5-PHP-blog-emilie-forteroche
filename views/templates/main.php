@@ -41,7 +41,7 @@
             <?php 
                 if(isset($_SESSION['user'])) {
                     echo '- 
-                <a href="index.php?action=monitoring">Monitoring</a>';
+                <a href="index.php?action=monitoring&sort=article_id">Monitoring</a>';
                 }
             ?>
         </p>

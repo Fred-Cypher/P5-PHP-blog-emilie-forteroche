@@ -42,7 +42,7 @@ class AdminController
         $articleWithComments = $articleManager->getArticlesWithCommentCount();
 
         // Tri pour l'affichage du tableau 
-        $sort = $_GET['sort'] ?? null;
+        $sort = $_GET['sort'] ?? 'id';
         $order = $_GET['order'] ?? 'asc';
 
         if ($sort) {
@@ -50,11 +50,8 @@ class AdminController
                 $valueA = $a[$sort];
                 $valueB = $b[$sort];
 
-                if ($valueA === $valueB) {
-                    return 0;
-                }
+                return $order === 'asc' ? $valueA <=> $valueB : $valueB <=> $valueA;
 
-                return ($order === 'asc' ? $valueA > $valueB : $valueA < $valueB) ? 1 : -1;
             });
         }
 

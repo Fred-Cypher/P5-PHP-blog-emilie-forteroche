@@ -19,7 +19,7 @@ $currentOrder = $_GET['order'] ?? null;
                         <a href="index.php?action=monitoring&sort=article_title&order=asc" class="<?= ($currentSort === 'article_title' && $currentOrder === 'asc') ? 'hidden' : ''; ?>">
                             <img src="../../icons/sort1.svg" class="icon" title="Tri croissant" />
                         </a>
-                        <a href="index.php?action=monitoring">
+                        <a href="index.php?action=monitoring&sort=article_id">
                             <img src="../../icons/stop.svg" class="icon" title="Aucun tri" />
                         </a>
                         <a href="index.php?action=monitoring&sort=article_title&order=desc" class="<?= ($currentSort === 'article_title' && $currentOrder === 'desc') ? 'hidden' : ''; ?>">
@@ -35,7 +35,7 @@ $currentOrder = $_GET['order'] ?? null;
                         <a href="index.php?action=monitoring&sort=article_views&order=asc" class="<?= ($currentSort === 'article_views' && $currentOrder === 'asc') ? 'hidden' : ''; ?>">
                             <img src="../../icons/sort1.svg" class="icon" title="Tri croissant" />
                         </a>
-                        <a href="index.php?action=monitoring">
+                        <a href="index.php?action=monitoring&sort=article_id">
                             <img src="../../icons/stop.svg" class="icon" title="Aucun tri" />
                         </a>
                         <a href="index.php?action=monitoring&sort=article_views&order=desc" class="<?= ($currentSort === 'article_views' && $currentOrder === 'desc') ? 'hidden' : ''; ?>">
@@ -51,7 +51,7 @@ $currentOrder = $_GET['order'] ?? null;
                         <a href="index.php?action=monitoring&sort=comment_count&order=asc" class="<?= ($currentSort === 'comment_count' && $currentOrder === 'asc') ? 'hidden' : ''; ?>">
                             <img src="../../icons/sort1.svg" class="icon" title="Tri croissant" />
                         </a>
-                        <a href="index.php?action=monitoring">
+                        <a href="index.php?action=monitoring&sort=article_id">
                             <img src="../../icons/stop.svg" class="icon" title="Aucun tri" />
                         </a>
                         <a href="index.php?action=monitoring&sort=comment_count&order=desc" class="<?= ($currentSort === 'comment_count' && $currentOrder === 'desc') ? 'hidden' : ''; ?>">
@@ -67,7 +67,7 @@ $currentOrder = $_GET['order'] ?? null;
                         <a href="index.php?action=monitoring&sort=article_date_creation&order=asc" class="<?= ($currentSort === 'article_date_creation' && $currentOrder === 'asc') ? 'hidden' : ''; ?>">
                             <img src="../../icons/sort1.svg" class="icon" title="Tri croissant" />
                         </a>
-                        <a href="index.php?action=monitoring">
+                        <a href="index.php?action=monitoring&sort=article_id">
                             <img src="../../icons/stop.svg" class="icon" title="Aucun tri" />
                         </a>
                         <a href="index.php?action=monitoring&sort=article_date_creation&order=desc" class="<?= ($currentSort === 'article_date_creation' && $currentOrder === 'desc') ? 'hidden' : ''; ?>">
